@@ -29,17 +29,23 @@
 </template>
 
 <script>
-    import {mapGetters} from 'vuex';
+    import {mapGetters, mapActions} from 'vuex';
     import AppNewQuote from '../../components/NewQuote.vue';
     import AppQuote from '../../components/Quote.vue';
 
     export default {
-        computed: {
-            ...mapGetters(['quotes']),
-        },
         components: {
             AppQuote,
             AppNewQuote,
+        },
+        computed: {
+            ...mapGetters(['quotes']),
+        },
+        methods: {
+            ...mapActions(['loadQuotes']),
+        },
+        mounted() {
+            this.loadQuotes();
         }
     };
 </script>
