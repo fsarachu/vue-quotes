@@ -6,9 +6,11 @@
 </template>
 
 <script>
+    import store from './store/store';
     import AppHeader from './views/layouts/Header.vue';
 
     export default {
+        store,
         components: {
             AppHeader
         }
