@@ -8,7 +8,7 @@ export default new Vuex.Store({
         quotes: []
     },
     getters: {
-        getQuotes: state => {
+        quotes: state => {
             return state.quotes;
         },
         getQuoteById: (state, getters) => (id) => {
