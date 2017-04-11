@@ -13,6 +13,6 @@
         store,
         components: {
             AppHeader
-        }
-    }
+        },
+    };
 </script>
