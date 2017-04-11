@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from './views/Home.vue';
-import Quotes from './views/quote/Quotes.vue';
+import Quotes from './views/Quotes.vue';
 
 Vue.use(VueRouter);
 

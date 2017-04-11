@@ -30,8 +30,8 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex';
-    import AppNewQuote from '../../components/NewQuote.vue';
-    import AppQuote from '../../components/Quote.vue';
+    import AppNewQuote from '../components/NewQuote.vue';
+    import AppQuote from '../components/Quote.vue';
 
     export default {
         components: {
