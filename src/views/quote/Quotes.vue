@@ -6,7 +6,7 @@
 
             <div class="columns">
                 <div class="column is-half is-offset-one-quarter">
-                    <app-new-quote @quoteAdded="quotes.push(quoteContent)"></app-new-quote>
+                    <app-new-quote></app-new-quote>
                 </div>
             </div>
 
