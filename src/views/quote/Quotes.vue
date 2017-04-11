@@ -29,14 +29,13 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
     import AppNewQuote from '../../components/NewQuote.vue';
     import AppQuote from '../../components/Quote.vue';
 
     export default {
-        data() {
-            return {
-                quotes: []
-            };
+        computed: {
+            ...mapGetters(['quotes']),
         },
         components: {
             AppQuote,
