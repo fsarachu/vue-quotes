@@ -1,22 +1,41 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Header from './views/layouts/Header.vue';
 import Home from './views/Home.vue';
 import Quotes from './views/Quotes.vue';
+import Signup from './views/Signup.vue';
+import Login from './views/Login.vue';
 
 Vue.use(VueRouter);
 
 let routes = [
     {
         path: '',
-        component: Home,
+        components: {
+            'default': Home,
+            'header-top': Header,
+        },
         name: 'home'
     },
     {
         path: '/quotes',
-        component: Quotes,
+        components: {
+            'default': Quotes,
+            'header-top': Header,
+        },
         name: 'quotes'
+    },
+    {
+        path: '/signup',
+        component: Signup,
+        name: 'signup'
+    },
+    {
+        path: '/login',
+        component: Login,
+        name: 'login'
     }
-]
+];
 
 export default new VueRouter({
     routes,
