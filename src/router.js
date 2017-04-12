@@ -4,7 +4,7 @@ import Header from './views/layouts/Header.vue';
 import Home from './views/Home.vue';
 import Quotes from './views/Quotes.vue';
 import Signup from './views/Signup.vue';
-import Login from './views/Login.vue';
+import Login from './views/Signin.vue';
 
 Vue.use(VueRouter);
 
