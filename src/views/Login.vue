@@ -1,43 +1,40 @@
 <template>
-    <section class="hero is-fullheight is-primary is-bold">
+    <section class="hero is-fullheight is-dark">
         <div class="hero-body">
             <div class="container">
                 <div class="columns is-vcentered">
 
-                    <div class="column is-4 is-offset-4">
+                    <div class="column is-8-tablet is-offset-2-tablet is-4-desktop is-offset-4-desktop">
 
-                        <h1 class="title">Login</h1>
+                        <h1 class="title has-text-centered">Login</h1>
 
                         <div class="box">
 
                             <div class="field">
-                                <label class="label">Email</label>
+                                <label for="email" class="label">Email</label>
                                 <p class="control">
-                                    <input class="input" type="email" autofocus>
+                                    <input v-model="email" id="email" class="input" type="email">
                                 </p>
                             </div>
 
                             <div class="field">
-                                <label class="label">Password</label>
+                                <label for="password" class="label">Password</label>
                                 <p class="control">
-                                    <input class="input" type="password">
+                                    <input v-model="password" id="password" class="input" type="password">
                                 </p>
                             </div>
 
-                            <hr>
-
                             <div class="field">
                                 <p class="control">
-                                    <button class="button is-primary is-large is-fullwidth">Login</button>
+                                    <button class="button is-primary is-medium is-fullwidth">Login</button>
                                 </p>
                             </div>
 
                         </div>
 
                         <p class="has-text-centered">
-                            <a href="login.html">Login</a>
-                            |
-                            <a href="#">Need help?</a>
+                            No account yet?
+                            <router-link :to="{name: 'signup'}">Sign up</router-link>
                         </p>
 
                     </div>
@@ -48,3 +45,14 @@
 
     </section>
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+                email: '',
+                password: '',
+            };
+        }
+    };
+</script>
