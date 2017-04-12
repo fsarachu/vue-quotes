@@ -13,9 +13,6 @@ export default new Vuex.Store({
         quotes: state => {
             return state.quotes;
         },
-        getQuoteById: (state, getters) => (id) => {
-            return state.quotes.find(quote => quote.id === id);
-        },
         token: state => state.token
     },
     mutations: {
