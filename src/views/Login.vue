@@ -11,9 +11,9 @@
                         <div class="box">
 
                             <div class="field">
-                                <label for="email" class="label">Email</label>
+                                <label for="username" class="label">Username</label>
                                 <p class="control">
-                                    <input v-model="email" id="email" class="input" type="email">
+                                    <input v-model="name" id="username" class="input" type="text">
                                 </p>
                             </div>
 
@@ -50,7 +50,7 @@
     export default {
         data() {
             return {
-                email: '',
+                name: '',
                 password: '',
             };
         }
