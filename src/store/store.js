@@ -10,32 +10,32 @@ export default new Vuex.Store({
         token: null
     },
     getters: {
-        quotes: state => {
+        quotes(state) {
             return state.quotes;
         },
-        token: state => state.token
+        token(state) {
+            return state.token;
+        }
     },
     mutations: {
-        loadQuotes: (state, payload) => {
+        loadQuotes(state, payload) {
             state.quotes = payload;
         },
-        addQuote: (state, payload) => {
+        addQuote(state, payload) {
             state.quotes.unshift(payload);
         },
-        setToken(state, {token}) {
-            state.token = token;
+        setToken(state, payload) {
+            state.token = payload;
         }
     },
     actions: {
-        loadQuotes: context => {
+        loadQuotes(context) {
             axios.get('http://vue-laravel-back.dev/api/quotes')
                 .then(({data}) => context.commit('loadQuotes', data.quotes))
                 .catch(error => console.log(error));
         },
-        addQuote: (context, payload) => {
-            axios.post('http://vue-laravel-back.dev/api/quotes', {
-                content: payload
-            })
+        addQuote(context, payload) {
+            axios.post('http://vue-laravel-back.dev/api/quotes', {content: payload})
                 .then(({data}) => context.commit('addQuote', data.quote))
                 .catch(error => console.log(error));
         },
