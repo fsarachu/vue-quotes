@@ -6,7 +6,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        quotes: []
+        quotes: [],
+        token: null
     },
     getters: {
         quotes: state => {
@@ -14,7 +15,8 @@ export default new Vuex.Store({
         },
         getQuoteById: (state, getters) => (id) => {
             return state.quotes.find(quote => quote.id === id);
-        }
+        },
+        token: state => state.token
     },
     mutations: {
         loadQuotes: (state, payload) => {
@@ -23,6 +25,9 @@ export default new Vuex.Store({
         addQuote: (state, payload) => {
             state.quotes.unshift(payload);
         },
+        setToken(state, {token}) {
+            state.token = token;
+        }
     },
     actions: {
         loadQuotes: context => {
@@ -37,5 +42,8 @@ export default new Vuex.Store({
                 .then(({data}) => context.commit('addQuote', data.quote))
                 .catch(error => console.log(error));
         },
+        setToken(context, payload) {
+            context.commit('setToken', payload);
+        }
     }
 });
