@@ -34,8 +34,6 @@
 
                         <p class="has-text-centered">
                             No account yet?
-
-
                             <router-link :to="{name: 'signup'}">Sign up</router-link>
                         </p>
 
@@ -49,6 +47,8 @@
 </template>
 
 <script>
+    import {mapActions, mapGetters} from 'vuex';
+
     export default {
         data() {
             return {
@@ -56,13 +56,21 @@
                 password: '',
             };
         },
+        computed: {
+            ...mapGetters(['intendedUrl']),
+        },
         methods: {
+            ...mapActions(['setToken']),
+
             onSubmit() {
-                this.$axios.post('http://vue-laravel-back.dev/api/users/signin', {
+                this.axios.post('http://vue-laravel-back.dev/api/users/signin', {
                     name: this.name,
                     password: this.password,
                 })
-                    .then(response => console.log(response.data))
+                    .then(response => {
+                        this.setToken(response.data.token);
+                        this.$router.push(this.intendedUrl);
+                    })
                     .catch(error => console.dir(error.response.data))
             }
         }
