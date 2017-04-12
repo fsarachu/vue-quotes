@@ -8,7 +8,7 @@
 
                         <h1 class="title has-text-centered">Login</h1>
 
-                        <div class="box">
+                        <form @submit.prevent="onSubmit" class="box">
 
                             <div class="field">
                                 <label for="username" class="label">Username</label>
@@ -30,10 +30,12 @@
                                 </p>
                             </div>
 
-                        </div>
+                        </form>
 
                         <p class="has-text-centered">
                             No account yet?
+
+
                             <router-link :to="{name: 'signup'}">Sign up</router-link>
                         </p>
 
@@ -53,6 +55,17 @@
                 name: '',
                 password: '',
             };
+        },
+        methods: {
+            onSubmit() {
+                this.$axios.post('http://vue-laravel-back.dev/api/users/signin', {
+                    name: this.name,
+                    password: this.password,
+                })
+                    .then(response => console.log(response.data))
+                    .catch(error => console.dir(error.response.data))
+            }
         }
+
     };
 </script>
