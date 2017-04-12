@@ -7,7 +7,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         quotes: [],
-        token: null
+        token: null,
+        intendedUrl: null,
     },
     getters: {
         quotes(state) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
         },
         token(state) {
             return state.token;
+        },
+        intendedUrl(state){
+            return state.intendedUrl;
         }
     },
     mutations: {
@@ -26,6 +30,9 @@ export default new Vuex.Store({
         },
         setToken(state, payload) {
             state.token = payload;
+        },
+        setIntendedUrl(state, payload) {
+            state.intendedUrl = payload;
         }
     },
     actions: {
@@ -41,6 +48,9 @@ export default new Vuex.Store({
         },
         setToken(context, payload) {
             context.commit('setToken', payload);
+        },
+        setIntendedUrl(context, payload) {
+            context.commit('setIntendedUrl', payload);
         }
     }
 });
