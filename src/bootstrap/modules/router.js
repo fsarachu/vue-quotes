@@ -36,6 +36,12 @@ let routes = [
         path: '/login',
         component: Login,
         name: 'login'
+    },
+    {
+        path: '*',
+        redirect: {
+            name: 'home'
+        }
     }
 ];
 
