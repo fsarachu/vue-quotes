@@ -15,13 +15,13 @@
             <template v-if="quotes.length">
                 <h3 class="title is-4 has-text-centered">Last Quotes</h3>
 
-                <div class="columns is-multiline">
+                <transition-group name="list" tag="div" class="columns is-multiline" appear>
 
-                    <div v-for="quote in quotes" class="column is-one-third">
+                    <div v-for="quote in quotes" :key="quote.id" class="column is-one-third">
                         <app-quote>{{ quote.content }}</app-quote>
                     </div>
 
-                </div>
+                </transition-group>
             </template>
 
         </div>
@@ -49,3 +49,19 @@
         }
     };
 </script>
+
+<style>
+    .list-item {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    .list-enter-active, .list-leave-active {
+        transition: all .3s;
+    }
+    .list-enter, .list-leave-to {
+        opacity: 0;
+    }
+    .list-move {
+        transition: transform .4s;
+    }
+</style>
