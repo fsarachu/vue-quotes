@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 Vue.use(Vuex);
 
@@ -16,6 +17,9 @@ export default new Vuex.Store({
         },
         token(state) {
             return state.token;
+        },
+        decodedToken(state) {
+            return (state.token) ? jwtDecode(state.token) : null;
         },
         intendedUrl(state){
             return (state.intendedUrl) ? state.intendedUrl : '/';
