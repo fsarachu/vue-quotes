@@ -48,7 +48,8 @@
                         </form>
 
                         <p class="has-text-centered">
-                            Already have an account? <router-link :to="{name: 'login'}">Login</router-link>
+                            Already have an account?
+                            <router-link :to="{name: 'login'}">Login</router-link>
                         </p>
 
                     </div>
@@ -61,7 +62,7 @@
 </template>
 
 <script>
-
+    import {mapActions, mapGetters} from 'vuex';
 
     export default {
         data() {
@@ -72,15 +73,23 @@
                 password_confirmation: '',
             };
         },
+        computed: {
+            ...mapGetters(['intendedUrl']),
+        },
         methods: {
+            ...mapActions(['setToken']),
+
             onSubmit() {
-                this.$axios.post('http://vue-laravel-back.dev/api/users/signup', {
+                this.axios.post('http://vue-laravel-back.dev/api/users/signup', {
                     name: this.name,
                     email: this.email,
                     password: this.password,
                     password_confirmation: this.password_confirmation
                 })
-                    .then(response => console.log(response))
+                    .then(response => {
+                        this.setToken(response.data.token);
+                        this.$router.push(this.intendedUrl);
+                    })
                     .catch(error => console.dir(error.response.data))
             }
         }
