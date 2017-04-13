@@ -9,6 +9,28 @@ import Quotes from '../../views/Quotes.vue';
 import Signup from '../../views/Signup.vue';
 import Login from '../../views/Signin.vue';
 
+// Define middleware
+let middleware = {
+    requestAuthentication(to, from, next) {
+        let publicRoutes = ['login', 'signup'];
+
+        if (!store.getters.isAuthenticated && !publicRoutes.includes(to.name)) {
+            store.dispatch('setIntendedUrl', to.path);
+            next({name: 'login'});
+        } else {
+            next();
+        }
+    },
+
+    redirectIfAuthenticated(to, from, next) {
+        if(store.getters.isAuthenticated) {
+            next(false);
+        } else {
+            next();
+        }
+    }
+};
+
 // Define routes
 let routes = [
     {
@@ -30,12 +52,14 @@ let routes = [
     {
         path: '/signup',
         component: Signup,
-        name: 'signup'
+        name: 'signup',
+        beforeEnter: middleware.redirectIfAuthenticated,
     },
     {
         path: '/login',
         component: Login,
-        name: 'login'
+        name: 'login',
+        beforeEnter: middleware.redirectIfAuthenticated,
     },
     {
         path: '*',
@@ -52,15 +76,7 @@ const router = new VueRouter({
     linkActiveClass: 'is-active',
 });
 
-// Define global guards
-router.beforeEach((to, from, next) => {
-
-    if (!store.getters.token && to.name !== 'login') {
-        store.dispatch('setIntendedUrl', to.path);
-        next({name: 'login'});
-    }
-
-    next();
-});
+// Protect all routes except public ones
+router.beforeEach(middleware.requestAuthentication);
 
 export default router;
