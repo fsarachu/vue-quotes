@@ -24,7 +24,7 @@ let middleware = {
 
     redirectIfAuthenticated(to, from, next) {
         if(store.getters.isAuthenticated) {
-            next(false);
+            next(store.getters.intendedUrl);
         } else {
             next();
         }
