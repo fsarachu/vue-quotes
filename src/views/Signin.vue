@@ -13,7 +13,7 @@
                             <div class="field">
                                 <label for="username" class="label">Username</label>
                                 <p class="control">
-                                    <input v-model="name" id="username" class="input" type="text">
+                                    <input v-model="name" id="username" class="input" type="text" autofocus>
                                 </p>
                             </div>
 
