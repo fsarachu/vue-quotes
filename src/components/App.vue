@@ -12,3 +12,7 @@
         store,
     };
 </script>
+
+<style lang="sass">
+    @import "../../node_modules/bulma/bulma";
+</style>
