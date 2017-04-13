@@ -19,6 +19,9 @@ export default new Vuex.Store({
         },
         intendedUrl(state){
             return (state.intendedUrl) ? state.intendedUrl : '/';
+        },
+        isAuthenticated(state) {
+            return !!(state.token);
         }
     },
     mutations: {
