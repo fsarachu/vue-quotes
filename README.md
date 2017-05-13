@@ -1,4 +1,4 @@
-# vue-laravel-front
+# vue-quotes
 
 > A Vue.js project
 
