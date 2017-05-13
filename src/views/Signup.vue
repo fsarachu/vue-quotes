@@ -80,7 +80,7 @@
             ...mapActions(['setToken']),
 
             onSubmit() {
-                this.axios.post('http://vue-laravel-back.dev/api/users/signup', {
+                this.axios.post('http://api.vue-laravel.dev/users/signup', {
                     name: this.name,
                     email: this.email,
                     password: this.password,
