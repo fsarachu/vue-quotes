@@ -63,7 +63,7 @@
             ...mapActions(['setToken']),
 
             onSubmit() {
-                this.axios.post('http://api.vue-laravel.dev/users/signin', {
+                this.axios.post('/users/signin', {
                     name: this.name,
                     password: this.password,
                 })

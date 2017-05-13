@@ -3,6 +3,7 @@ import store from '../../store/store';
 
 // Set default headers
 Axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+Axios.defaults.baseURL = 'http://api.vue-laravel.dev/';
 
 // Inject JWT token auth header
 Axios.interceptors.request.use(

@@ -46,12 +46,12 @@ export default new Vuex.Store({
     },
     actions: {
         loadQuotes(context) {
-            axios.get('http://api.vue-laravel.dev/quotes')
+            axios.get('/quotes')
                 .then(({data}) => context.commit('loadQuotes', data.quotes))
                 .catch(error => console.log(error));
         },
         addQuote(context, payload) {
-            axios.post('http://api.vue-laravel.dev/quotes', {content: payload})
+            axios.post('/quotes', {content: payload})
                 .then(({data}) => context.commit('addQuote', data.quote))
                 .catch(error => console.log(error));
         },
