@@ -60,7 +60,7 @@
             ...mapGetters(['intendedUrl']),
         },
         methods: {
-            ...mapActions(['setToken']),
+            ...mapActions(['setUser', 'setToken']),
 
             onSubmit() {
                 this.axios.post('/users/signin', {
@@ -68,7 +68,11 @@
                     password: this.password,
                 })
                     .then(response => {
-                        this.setToken(response.data.token);
+                        let responseData = response.data.data;
+
+                        this.setUser(responseData.user);
+                        this.setToken(responseData.token);
+
                         this.$router.push(this.intendedUrl);
                     })
                     .catch(error => console.dir(error.response.data))

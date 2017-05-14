@@ -9,13 +9,14 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     plugins: [createPersistedState()],
     state: {
-        quotes: [],
+        user: null,
         token: null,
         intendedUrl: null,
+        quotes: [],
     },
     getters: {
-        quotes(state) {
-            return state.quotes;
+        user(state) {
+            return state.user;
         },
         token(state) {
             return state.token;
@@ -28,23 +29,38 @@ export default new Vuex.Store({
         },
         isAuthenticated(state) {
             return !!(state.token);
-        }
+        },
+        quotes(state) {
+            return state.quotes;
+        },
     },
     mutations: {
-        loadQuotes(state, payload) {
-            state.quotes = payload;
-        },
-        addQuote(state, payload) {
-            state.quotes.unshift(payload);
+        setUser(state, payload) {
+            state.user = payload;
         },
         setToken(state, payload) {
             state.token = payload;
         },
         setIntendedUrl(state, payload) {
             state.intendedUrl = payload;
-        }
+        },
+        loadQuotes(state, payload) {
+            state.quotes = payload;
+        },
+        addQuote(state, payload) {
+            state.quotes.unshift(payload);
+        },
     },
     actions: {
+        setUser(context, payload) {
+            context.commit('setUser', payload);
+        },
+        setToken(context, payload) {
+            context.commit('setToken', payload);
+        },
+        setIntendedUrl(context, payload) {
+            context.commit('setIntendedUrl', payload);
+        },
         loadQuotes(context) {
             axios.get('/quotes')
                 .then(({data}) => context.commit('loadQuotes', data.quotes))
@@ -55,11 +71,5 @@ export default new Vuex.Store({
                 .then(({data}) => context.commit('addQuote', data.quote))
                 .catch(error => console.log(error));
         },
-        setToken(context, payload) {
-            context.commit('setToken', payload);
-        },
-        setIntendedUrl(context, payload) {
-            context.commit('setIntendedUrl', payload);
-        }
     }
 });
