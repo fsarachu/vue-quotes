@@ -1,8 +1,9 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import createPersistedState from 'vuex-persistedstate';
-import axios from 'axios';
-import jwtDecode from 'jwt-decode';
+import axios from "axios";
+import createPersistedState from "vuex-persistedstate";
+import jwtDecode from "jwt-decode";
+import router from "../bootstrap/modules/router";
+import Vue from "vue";
+import Vuex from "vuex";
 
 Vue.use(Vuex);
 
@@ -57,6 +58,7 @@ export default new Vuex.Store({
         },
         logout(context, payload) {
             context.commit('setToken', null);
+            router.push({name: 'login'});
         },
         setIntendedUrl(context, payload) {
             context.commit('setIntendedUrl', payload);

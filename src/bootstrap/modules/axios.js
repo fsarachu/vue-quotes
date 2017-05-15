@@ -1,5 +1,4 @@
 import Axios from "axios";
-import router from "./router";
 import store from "../../store/store";
 
 // Set default headers
@@ -32,8 +31,7 @@ Axios.interceptors.response.use(
     },
     error => {
         if (error.response.status === 401) {
-            store.dispatch('logout', null);
-            router.push({name: 'login'});
+            store.dispatch('logout');
         }
 
         Promise.reject(error);
