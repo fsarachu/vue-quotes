@@ -12,6 +12,7 @@ export default new Vuex.Store({
         token: null,
         intendedUrl: null,
         quotes: [],
+        isSubmittingQuote: false,
     },
     getters: {
         token(state) {
@@ -29,6 +30,9 @@ export default new Vuex.Store({
         quotes(state) {
             return state.quotes;
         },
+        isSubmittingQuote(state) {
+            return state.isSubmittingQuote;
+        }
     },
     mutations: {
         setToken(state, payload) {
@@ -42,6 +46,9 @@ export default new Vuex.Store({
         },
         addQuote(state, payload) {
             state.quotes.unshift(payload);
+        },
+        setIsSubmittingQuote(state, payload){
+            state.isSubmittingQuote = payload;
         },
     },
     actions: {
@@ -60,9 +67,18 @@ export default new Vuex.Store({
                 .catch(error => console.log(error));
         },
         addQuote(context, payload) {
-            axios.post('/quotes', {content: payload})
-                .then(({data}) => context.commit('addQuote', data.quote))
-                .catch(error => console.log(error));
+            axios.post('/quotes', {content: payload.content})
+                .then(({data}) => {
+                    context.dispatch('setIsSubmittingQuote', false);
+                    context.commit('addQuote', data.quote);
+                })
+                .catch(error => {
+                    context.dispatch('setIsSubmittingQuote', false);
+                    console.log(error);
+                });
+        },
+        setIsSubmittingQuote(context, payload){
+            context.commit('setIsSubmittingQuote', payload);
         },
     }
 });
