@@ -4,7 +4,7 @@
             <div class="content">
                 <p>
                     <strong>{{quote.user.name}}</strong>
-                    <small>some time ago</small>
+                    <small><app-time-ago :since="quote.created_at"></app-time-ago></small>
                     <br>
                     {{quote.content}}
                 </p>
@@ -17,7 +17,12 @@
 </template>
 
 <script>
+    import AppTimeAgo from './TimeAgo.vue';
+
     export default {
+        components: {
+            AppTimeAgo,
+        },
         props: {
             quote: {
                 type: Object,
