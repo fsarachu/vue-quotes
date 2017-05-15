@@ -4,7 +4,7 @@ import store from "../../store/store";
 
 // Set default headers
 Axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-Axios.defaults.baseURL = 'http://api.vue-laravel.dev/';
+Axios.defaults.baseURL = 'http://api.vue-quotes.fsarachu.com/';
 
 // Inject JWT token auth header
 Axios.interceptors.request.use(
