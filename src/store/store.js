@@ -9,15 +9,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     plugins: [createPersistedState()],
     state: {
-        user: null,
         token: null,
         intendedUrl: null,
         quotes: [],
     },
     getters: {
-        user(state) {
-            return state.user;
-        },
         token(state) {
             return state.token;
         },
@@ -35,9 +31,6 @@ export default new Vuex.Store({
         },
     },
     mutations: {
-        setUser(state, payload) {
-            state.user = payload;
-        },
         setToken(state, payload) {
             state.token = payload;
         },
@@ -52,9 +45,6 @@ export default new Vuex.Store({
         },
     },
     actions: {
-        setUser(context, payload) {
-            context.commit('setUser', payload);
-        },
         setToken(context, payload) {
             context.commit('setToken', payload);
         },
