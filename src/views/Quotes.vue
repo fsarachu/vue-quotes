@@ -5,7 +5,7 @@
             <h3 class="title is-4 has-text-centered">Add a Quote</h3>
 
             <div class="columns">
-                <div class="column is-half is-offset-one-quarter">
+                <div class="column is-one-third is-offset-one-third">
                     <app-new-quote></app-new-quote>
                 </div>
             </div>
@@ -13,12 +13,12 @@
             <hr>
 
             <template v-if="quotes.length">
-                <h3 class="title is-4 has-text-centered">Last Quotes</h3>
+                <h3 class="title is-4 has-text-centered">Latest Quotes</h3>
 
                 <transition-group name="list" tag="div" class="columns is-multiline" appear>
 
-                    <div v-for="quote in quotes" :key="quote.id" class="column is-one-third">
-                        <app-quote>{{ quote.content }}</app-quote>
+                    <div v-for="quote in quotes" :key="quote.id" class="column is-half">
+                        <app-quote :quote="quote"></app-quote>
                     </div>
 
                 </transition-group>
