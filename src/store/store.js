@@ -48,6 +48,9 @@ export default new Vuex.Store({
         setToken(context, payload) {
             context.commit('setToken', payload);
         },
+        logout(context, payload) {
+            context.commit('setToken', null);
+        },
         setIntendedUrl(context, payload) {
             context.commit('setIntendedUrl', payload);
         },
