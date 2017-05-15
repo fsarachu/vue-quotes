@@ -87,11 +87,6 @@
                     password_confirmation: this.password_confirmation
                 })
                     .then(response => {
-                        let responseData = response.data.data;
-
-                        this.setUser(responseData.user);
-                        this.setToken(responseData.token);
-
                         this.$router.push(this.intendedUrl);
                     })
                     .catch(error => console.dir(error.response.data))
