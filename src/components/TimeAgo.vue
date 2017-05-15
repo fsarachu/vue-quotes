@@ -7,6 +7,7 @@
 
     export default {
         mounted() {
+            this.updateTime();
             setInterval(this.updateTime, this.refreshRate);
         },
         props: {
@@ -21,7 +22,7 @@
         },
         data() {
             return {
-                timeAgo: moment.utc(this.since).fromNow(),
+                timeAgo: '',
             }
         },
         computed: {
