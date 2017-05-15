@@ -10,9 +10,9 @@
                 </p>
             </div>
         </div>
-        <div class="media-right">
-            <button class="delete"></button>
-        </div>
+        <!--<div class="media-right">-->
+            <!--<button class="delete"></button>-->
+        <!--</div>-->
     </article>
 </template>
 
