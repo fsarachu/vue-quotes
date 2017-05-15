@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
-    "bulma": "git+https://github.com/jgthms/bulma.git#ea8b26ed1291d88453a16581dad33a0af53afaf8",
+    "bulma": "^0.4.1",
     "jwt-decode": "^2.2.0",
     "vue": "^2.2.1",
     "vue-axios": "^2.0.1",
